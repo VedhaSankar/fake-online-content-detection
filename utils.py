@@ -48,16 +48,16 @@ def predict_authentication(title, text):
 
     data = {
         "title" : [title],
-        "text"  : [text]
-        
+        "text"  : [text]    
     }
 
     z_test = pd.DataFrame(data)
 
+    print (z_test)
 
     auth = pac.predict(z_test)
 
-    print (auth[0])
+    print (auth)
 
     #DataFlair - Predict on the test set and calculate accuracy
     # y_pred = pac.predict(tfidf_test)
@@ -67,6 +67,10 @@ def predict_authentication(title, text):
 def startpy():
 
     # save_model()
+
+    title = '''
+        A Crypto Ban? The Bill Not Final, Looks At Checks And Balances: Report
+    '''
 
     text = '''
         India is considering a proposal to treat cryptocurrencies as a financial asset while safeguarding small investors, according to people familiar with the matter.
@@ -78,13 +82,11 @@ def startpy():
 
         A spokesman for the finance ministry couldn't be immediately reached for a comment.
     '''
-    title = '''
-        A Crypto Ban? The Bill Not Final, Looks At Checks And Balances: Report
-    '''
 
-    value = predict_authentication(text, title)
 
-    print(value)
+    predict_authentication(title, text)
+
+    # print(value)
 
 
 if __name__== "__main__":
