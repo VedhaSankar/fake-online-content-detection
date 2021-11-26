@@ -79,11 +79,12 @@
 
     em {
       font-style: normal;
-      color: #681A1E
+      color: #681A1E;
+      font-size: medium;
 
     }
 
-    table {`
+    table {
       width: 100%;
       border-collapse: collapse;
     }
@@ -92,6 +93,7 @@
       width: 50%;
       position: relative;
       vertical-align: top;
+  
     }
 
     .title_header {
@@ -273,7 +275,113 @@
       text-decoration: none;
       display: block;
     }
+    /* * {
+    outline:none;
+    border:none;
+    margin:0px;
+    padding:0px;
+    font-family:Courier, monospace;
+    } */
 
+  #paper {
+    color:#FFF;
+    font-size:20px;
+  }
+  #margin {
+    margin-left:12px;
+    margin-bottom:20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; 
+  }
+
+  input[type=text]:focus{
+    border-color:rgb(29, 46, 63);
+    box-shadow:0 0 8px 0 rgb(29, 46, 63);
+    /* width:100%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s; */
+  }
+  
+  #text {
+    width:500px;
+    overflow:hidden;
+    background-color:#FFF;
+    color:#222;
+    font-family:Courier, monospace;
+    font-weight:normal;
+    font-size:24px;
+    resize:none;
+    line-height:40px;
+    padding-left:100px;
+    padding-right:100px;
+    padding-top:45px;
+    padding-bottom:34px;
+    background-image:url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+    background-repeat:repeat-y, repeat;
+    -webkit-border-radius:12px;
+    border-radius:12px;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    border-top:1px solid #FFF;
+    border-bottom:1px solid #FFF;
+  }
+  #title {
+    background-color:transparent;
+    border-bottom:3px solid #FFF;
+    color:#FFF;
+    font-size:20px;
+    font-family:Courier, monospace;
+    height:28px;
+    font-weight:bold;
+    width:220px;
+  }
+  #button {
+    cursor:pointer;
+    margin-top:20px;
+    float:right;
+    height:40px;
+    padding-left:24px;
+    padding-right:24px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    font-size:20px;
+    color:#FFF;
+    text-shadow: 0px -1px 0px #000000;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    border-top:1px solid #FFF;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    background-color: #62add6;
+    background-image:url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
+    background-repeat:repeat-x;
+  }
+  #button:active {
+    zoom: 1;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+  }
+  #button:focus {
+    zoom: 1;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+  }
+  #wrapper {
+    width:700px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:24px;
+    margin-bottom:100px;
+  }
     .dropdown-content a:hover {
       color: #d80b1a;
     }
@@ -779,6 +887,7 @@ opacity:1;
         width: 100%;
         position: relative;
         top: 10vh;
+        align-items:right;
       }
 
       .section2 .cards .card {
@@ -890,59 +999,34 @@ opacity:1;
   </head>
 
   <body>
-
-
-
     <!--HEADER-->
     <header>
-      <div class="banner">
-        <span>
-          <a href="emailto:Hosting@hosting@pcel.com"><em style="color:#232263;">Email</em> : yoursfakely@gmail.com</a>
-          <a href="tel:8120079869"><em style="color:#232263;">Call us</em> : XX-XXXX-XXXXX</a>
-        </span>
-        <span>
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-        </span>
-      </div>
-      <nav class="nav" id="nav">
-        <a href="#" class="active">®<em>Yours</em>
-          <l style="font-weight:200;">|</l> Fakely
-        </a>
-        <a href="#">CONTACT</a>
-
-        <a href="#">ABOUT US</a>
-        <a href="#" style="float:right;padding:10px 0;"><i class="fa fa-user"></i> LOGIN</a>
-        <a class="icon" id="icon" onclick="opennav()"><i class="fa fa-bars"></i></a>
-      </nav>
-
       <div id="navbar">
-        <a href="#"><i class="fa fa-user"></i> LOGIN</a>
-        <a href="#">CONTACT</a>
-        <a href="#">ABOUT</a>
+        <a href="#"><i class="fa fa-user"></i>Login</a>
+        <a href="yourfakely@gmail.com"><em style="color:#142F43">Email</em> : yourfakely@gmail.com</a>    
+        <a href="tel:XXXXXXX"><em style="color:#142F43">Contact us</em> : XX-XXXX-XXXXX</a>
+  
       </div>
     </header>
-
-
-
-
 
     <!--CONTAINER-->
     <div class="container">
       <table>
         <tr>
           <td>
+            <img src="manthan.png" alt="YoursFakely logo" width="50">
+            <br>
             <section>
-              <em>
-                <h2>Welcome to YoursFakely</h2>
-              </em>
+             <br><br>
+             <h5 class="sub-title">The highly accurate platform to detect online fake content.</h5>
+    
               <h1 class="title ml15">
                 <span class="text-wrapper">
                   <span class="letters">Eradicating the false in a Jiffy!</span>
                 </span>
               </h1>
-              <h5 class="sub-title">The highly accurate platform to detect online fake content.</h5>
+             
+              <br>
               <a href="#" class="btn1">Paste your LINKS here</a>
               <a href="#" class="btn1">Paste your CONTENT here</a>
             </section>
@@ -954,6 +1038,23 @@ opacity:1;
       </table>
     </div>
 
+    <div id="wrapper">
+      <em>
+        <h2>Content :</h2>
+      </em>
+      <form id="paper" method="get" action="">
+        <textarea placeholder="Paste your content here." id="text" name="text" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea>  
+        <br>
+        <input id="button" type="submit" value="Predict">
+        
+      </form>
+    
+    </div>
+    <!-- <div id="yoyo">
+    <input type="text" placeholder="Paste your link here">
+    <input id="button" type="submit" value="Predict">
+    </div> -->
+
 
     <!--SECTION1-->
     <section class="section1">
@@ -963,6 +1064,7 @@ opacity:1;
       <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Raleway:wght@300&family=Recursive:wght@500&display=swap"
         rel="stylesheet">
+        <br><br><br><br><br><br><br><br>
         <div class="title_header">
           <h1 class="title">YoursFakely provides the best features!</h1>
         </div>
@@ -1092,6 +1194,11 @@ opacity:1;
           count = 0;
         }
       }
+
+        $(document).ready(function(){
+        $('#title').focus();
+        $('#text').autosize();
+        });
     </script>
   </body>
 
