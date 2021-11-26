@@ -74,15 +74,16 @@
 
     .sub-title {
       font-size: 1.3em;
-      color: gray;
+      color:#142F43;
     }
 
     em {
       font-style: normal;
-      color: #d80b1a;
+      color: #681A1E
+
     }
 
-    table {
+    table {`
       width: 100%;
       border-collapse: collapse;
     }
@@ -119,11 +120,11 @@
     }
 
     /*ANIMATION*/
-    .ml9 {
+    .m159 {
       position: relative;
     }
 
-    .ml9 .text-wrapper {
+    .ml15 .text-wrapper {
       position: relative;
       display: inline-block;
       padding-right: 0.05em;
@@ -131,7 +132,7 @@
       overflow: hidden;
     }
 
-    .ml9 .letter {
+    .ml15 .letter {
       transform-origin: 50% 100%;
       display: inline-block;
     }
@@ -448,13 +449,6 @@
     }
 
 
-
-
-
-
-
-
-
     /*CONTAINER*/
     .container {
       width: 100%;
@@ -481,19 +475,6 @@
     .container section .sub-title {
       font-weight: 400;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*SECTION1*/
     .section1 {
@@ -956,7 +937,7 @@ opacity:1;
               <em>
                 <h2>Welcome to YoursFakely</h2>
               </em>
-              <h1 class="title ml9">
+              <h1 class="title ml15">
                 <span class="text-wrapper">
                   <span class="letters">Eradicating the false in a Jiffy!</span>
                 </span>
@@ -994,8 +975,8 @@ opacity:1;
 
           <section>
             <ul>
-              <li>#Results predicted in a jiffy.</li>
-              <li>#User friendly </li>
+              <li> Results predicted in a jiffy.</li>
+              <li> User friendly </li>
             </ul>
           </section>
         </div>
@@ -1008,8 +989,8 @@ opacity:1;
             Authentic </h1>
           <section>
             <ul>
-              <li>#Provides "Authentic" results</li>
-              <li>#Accuracy values displayed</li>
+              <li> Provides "Authentic" results</li>
+              <li> Accuracy values displayed</li>
             </ul>
           </section>
         </div>
@@ -1020,8 +1001,8 @@ opacity:1;
           <h1 class="title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Metrics </h1>
           <section>
             <ul>
-              <li>#Accuracy values mentioned</li>
-              <li>#Pictorial representation</li>
+              <li> Accuracy values mentioned</li>
+              <li> Pictorial representation</li>
             </ul>
 
           </section>
@@ -1053,20 +1034,20 @@ opacity:1;
     <script src="js/custom.js"></script>
     <script>
       // Wrap every letter in a span
-      var textWrapper = document.querySelector('.ml9 .letters');
+      var textWrapper = document.querySelector('.ml15 .letters');
       textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
       anime.timeline({
           loop: true
         })
         .add({
-          targets: '.ml9 .letter',
+          targets: '.ml15 .letter',
           scale: [0, 1],
           duration: 1500,
           elasticity: 600,
           delay: (el, i) => 45 * (i + 1)
         }).add({
-          targets: '.ml9',
+          targets: '.ml15',
           opacity: 0,
           duration: 1000,
           easing: "easeOutExpo",
