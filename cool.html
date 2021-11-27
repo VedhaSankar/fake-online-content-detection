@@ -54,10 +54,6 @@
       background: #142F43;
     }
 
-    .btn2 {
-      background: #d80b1a;
-    }
-
     .btn3 {
       background: #1e1e1e;
     }
@@ -202,10 +198,6 @@
       font-weight: 400;
     }
 
-    header .nav a:hover:not(:first-child) {
-      color: #d80b1a;
-    }
-
     header .nav a.active {
       box-sizing: border-box;
       transition: all 0.2s ease-in-out;
@@ -220,7 +212,6 @@
     header .nav .dropdown li:before {
       content: "\f0a4";
       font-family: "FontAwesome";
-      color: #d80b1a;
       margin: 0px 4px;
     }
 
@@ -275,11 +266,6 @@
       text-decoration: none;
       display: block;
     }
-
-    .dropdown-content a:hover {
-      color: #d80b1a;
-    }
-
     .dropdown:hover .dropdown-content {
       display: block;
     }
@@ -465,7 +451,8 @@
       width: 79%;
       height: auto;
       position: relative;
-      top: 20vh;
+      top: 5 vh;
+      margin-left: 20px;
     }
 
     .container section {
@@ -495,10 +482,10 @@
     .section1 .sub-title {
       font-family: 'Raleway', sans-serif;
     }
-
+/* 
     .no {
       color: #c0392b;
-    }
+    } */
 
     .not_available {
       color: gray;
@@ -557,13 +544,57 @@
       opacity: 0;
     }
 
-    /*.price_cards .card:hover > .badge{
--moz-transition: all 0.8s ease-out; -o-transition: all 0.8s ease-out; 
--webkit-transition: all 0.8s ease-out;
--ms-transition: all 0.8s ease-out;
-transition: all 0.8s ease-out;  
-opacity:1;
-}*/
+    html, body {
+  margin: 0;
+  padding: 0;
+  width:100%;
+  height: 100%;
+  background:white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+}
+
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border-radius: 0.9em;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight:100;
+  line-height: 1;
+  margin: 20px;
+  padding: 0.4em 0.9em;
+  text-decoration: none;
+  text-align: right;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+.third {
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  transition: all 150ms ease-in-out;
+}
+.third:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+
+
     .price_cards .card .title {
       color: #fff;
     }
@@ -659,12 +690,6 @@ opacity:1;
       box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
     }
 
-
-    .section2 .cards .card i {
-      font-size: 3em;
-      color: #d80b1a;
-    }
-
     .section2 .cards .card .sub-title {
       font-size: 1.3em;
       color: #000;
@@ -682,12 +707,6 @@ opacity:1;
     .section3 {
       width: 100%;
       margin: 10vh 0;
-    }
-
-    .section3 table {
-      width: 95%;
-      margin: auto;
-      border-top: 3px solid #d80b1a;
     }
 
     .section3 table th,
@@ -809,6 +828,40 @@ opacity:1;
         width: 95%;
       }
     }
+    body {background: #F0F0F0;}
+
+
+h2 {margin-left: 55px;}
+
+textarea {
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 500px;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
 
 
     /*FOOTER*/
@@ -911,42 +964,46 @@ opacity:1;
             <img src="manthan.png" alt="YoursFakely logo" width="50">
             <br>
             <section>
-             <br><br>
-             <h5 class="sub-title">The highly accurate platform to detect online fake content.</h5>
+             <h5 class="sub-title"><b>The highly accurate platform to detect online fake content.</b></h5>
     
               <h1 class="title ml15">
                 <span class="text-wrapper">
                   <span class="letters">Eradicating the false in a Jiffy!</span>
                 </span>
               </h1>
-             
-              <br>
-              <a href="#" class="btn1">Paste your LINKS here</a>
-              <a href="#" class="btn1">Paste your CONTENT here</a>
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 52px">Paste your CONTENT here</a>
+              <br><br>
+              <textarea placeholder="Paste your content here." rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+
+              <button class="btn third" style="margin-right: 20px ; margin-left: 470px; color:#142F43"> Predict</button>
+
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 52px">Paste your LINK here</a>
+              <br><br>
+              <textarea placeholder="Paste your link here." rows="1" name="comment[text]" id="comment_text" cols="1" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" 
+              style = "margin-top: 10px;
+              margin-left: 50px;
+              width: 500px;
+              height: 40px;"></textarea>
+
+              <button class="btn third" style="margin-right: 20px ; margin-left: 470px; color:#142F43"> Predict</button>
             </section>
           </td>
           <td>
-            <img src="fake.jpg" alt="">
+            <img src="fake.jpg" alt="" style="width:90%; margin-top:-11 vh;height: auto;
+            position: relative;">
           </td>
         </tr>
       </table>
     </div>
-
-    <!-- <div id="yoyo">
-    <input type="text" placeholder="Paste your link here">
-    <input id="button" type="submit" value="Predict">
-    </div> -->
-
+    <br><br><br><br><br><br><br><br>
 
     <!--SECTION1-->
     <section class="section1">
       <!--******PRICE CARDS******-->
-
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Raleway:wght@300&family=Recursive:wght@500&display=swap"
         rel="stylesheet">
-        <br><br><br><br><br><br><br><br>
         <div class="title_header">
           <h1 class="title">YoursFakely provides the best features!</h1>
         </div>
@@ -955,8 +1012,7 @@ opacity:1;
         <!--CARD_BEGINING-->
         <div class="card card_1">
           <img src="https://i.ibb.co/BCRGYmx/bronze.png" class="badge" alt="STATER">
-          <h1 class="title"><i class="fa fa-rocket"></i> Quick Results</h1>
-
+          <h3 class="title"><i class="fa fa-rocket"></i> Quick Results</h3>
           <section>
             <ul>
               <li> Results predicted in a jiffy.</li>
@@ -969,8 +1025,8 @@ opacity:1;
         <div class="card card_2">
           <img src="https://i.ibb.co/DQR0Mzt/silver.png" class="badge" alt="PREMIUM">
 
-          <h1 class="title"><i class="fa fa-check-circle" aria-hidden="true"></i>
-            Authentic </h1>
+          <h3 class="title"><i class="fa fa-check-circle" aria-hidden="true"></i>
+            Authentic </h3>
           <section>
             <ul>
               <li> Provides "Authentic" results</li>
@@ -982,7 +1038,7 @@ opacity:1;
         <!--CARD_BEGINING-->
         <div class="card card_3">
           <img src="https://i.ibb.co/Nmh4LR0/gold.png" class="badge" alt="UNLIMITED">
-          <h1 class="title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Metrics </h1>
+          <h3 class="title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Metrics </h3>
           <section>
             <ul>
               <li> Accuracy values mentioned</li>
