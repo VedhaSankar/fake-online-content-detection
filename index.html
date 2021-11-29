@@ -287,23 +287,7 @@
         width: 90%;
       }
     }
-    hr {
-    border: none;
-    border-top: 3px double #333;
-    color: #333;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-}
-
-hr:after {
-    background: #fff;
-    content: '§';
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-}
-
+ 
     @media (max-width:720px) {
       header {
         position: sticky;
@@ -1012,7 +996,13 @@ textarea:focus {
       </table>
     </div>
     <br><br><br><br><br>
-    <hr><br><br><br><br><br><br><br><br><br><br><br>
+    <hr class="hr-17" style="
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
+    ">
+<br><br><br><br><br><br><br><br><br><br><br>
 
     <!--SECTION1-->
     <section class="section1">
