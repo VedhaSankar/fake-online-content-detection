@@ -109,13 +109,6 @@
       font-weight: 400;
     }
 
-    .fa-check {
-      color: green;
-    }
-
-    .fa-times {
-      color: #d80b1a;
-    }
 
     /*ANIMATION*/
     .m159 {
@@ -294,6 +287,22 @@
         width: 90%;
       }
     }
+    hr {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+
+hr:after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}
 
     @media (max-width:720px) {
       header {
@@ -964,28 +973,35 @@ textarea:focus {
             <img src="manthan.png" alt="YoursFakely logo" width="50">
             <br>
             <section>
-             <h5 class="sub-title"><b>The highly accurate platform to detect online fake content.</b></h5>
+             <h5 class="sub-title" style="margin-top: -3rem;"><b>The highly accurate platform to detect online fake content.</b></h5>
     
               <h1 class="title ml15">
                 <span class="text-wrapper">
                   <span class="letters">Eradicating the false in a Jiffy!</span>
                 </span>
               </h1>
-              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 52px">Paste your CONTENT here</a>
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 17rem;font-size: larger;"><b>Paste your CONTENT here</a>
               <br><br>
-              <textarea placeholder="Paste your content here." rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+              <textarea placeholder="Paste your content here." rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"
+                style = "margin-top: 10px;
+              margin-left: 17rem"></textarea>
 
-              <button class="btn third" style="margin-right: 20px ; margin-left: 470px; color:#142F43"> Predict</button>
+              <button class="btn third" style="margin-right: 20px ; margin-left: 30rem; color:#142F43"> Predict</button>
+              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+              </b></h5>
+              <br>
 
-              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 52px">Paste your LINK here</a>
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 17rem;font-size: larger;"><b>Paste your LINK here</a></b>
               <br><br>
               <textarea placeholder="Paste your link here." rows="1" name="comment[text]" id="comment_text" cols="1" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" 
               style = "margin-top: 10px;
-              margin-left: 50px;
+              margin-left: 17rem;
               width: 500px;
               height: 40px;"></textarea>
 
-              <button class="btn third" style="margin-right: 20px ; margin-left: 470px; color:#142F43"> Predict</button>
+              <button class="btn third" style="margin-right: 20px ; margin-left: 30rem; color:#142F43"> Predict</button>
+              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+                <br><br><br>
             </section>
           </td>
           <td>
@@ -995,7 +1011,8 @@ textarea:focus {
         </tr>
       </table>
     </div>
-    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
+    <hr><br><br><br><br><br><br><br><br><br><br><br>
 
     <!--SECTION1-->
     <section class="section1">
@@ -1011,7 +1028,6 @@ textarea:focus {
       <div class="price_cards">
         <!--CARD_BEGINING-->
         <div class="card card_1">
-          <img src="https://i.ibb.co/BCRGYmx/bronze.png" class="badge" alt="STATER">
           <h3 class="title"><i class="fa fa-rocket"></i> Quick Results</h3>
           <section>
             <ul>
@@ -1023,7 +1039,6 @@ textarea:focus {
         <!--CARD_ENDS-->
         <!--CARD_BEGINING-->
         <div class="card card_2">
-          <img src="https://i.ibb.co/DQR0Mzt/silver.png" class="badge" alt="PREMIUM">
 
           <h3 class="title"><i class="fa fa-check-circle" aria-hidden="true"></i>
             Authentic </h3>
@@ -1037,7 +1052,6 @@ textarea:focus {
         <!--CARD_ENDS-->
         <!--CARD_BEGINING-->
         <div class="card card_3">
-          <img src="https://i.ibb.co/Nmh4LR0/gold.png" class="badge" alt="UNLIMITED">
           <h3 class="title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Metrics </h3>
           <section>
             <ul>
@@ -1054,7 +1068,7 @@ textarea:focus {
 
     <!--FOOTER-->
     <footer>
-      <div class="footer">
+      <div class="footer" style="margin-top: -10rem;">
         <div class="row">
           <a href="#"><i class="fa fa-facebook"></i></a>
           <a href="#"><i class="fa fa-instagram"></i></a>
