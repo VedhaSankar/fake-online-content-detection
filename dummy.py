@@ -34,7 +34,7 @@ With a clear view of at least one intruder’s face, Baylee began taking screens
 '''
 
 
-df = pd.read_csv("news.csv")
+df = pd.read_csv("result.csv")
 
 ps = PorterStemmer()
 
@@ -47,7 +47,7 @@ def wordopt(text):
     return text
 
 
-X = df['Body']
+X = df['text']
 Y = df.Label
 
 X, Y = df.Body.fillna(' '), df.Label
@@ -109,17 +109,17 @@ y_pred=pac.predict(tfidf_test)
 print (y_pred)
 '''
 '''
-# lab = []
+lab = []
 
-# for index, row in df.iterrows():
+for index, row in df.iterrows():
 
-#     if row['Label'] == "REAL":
+    if row['Label'] == "REAL":
 
-#         lab.append(1)
+        lab.append(1)
 
-#     elif row['Label'] == 'FAKE':
+    elif row['Label'] == 'FAKE':
 
-#         lab.append(0)
+        lab.append(0)
 
 # df['label'] = lab
 
