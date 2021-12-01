@@ -1,48 +1,53 @@
 from flask import Flask,request, url_for, redirect, render_template
 import pickle
-
+import main as m
 
 app = Flask(__name__)
 
 # @vedha - enter the pickle file here
-model=pickle.load(open('model_name.pkl','rb'))
+model = pickle.load(open('model_svm.pkl','rb'))
 
 
 @app.route('/')
 def home():
     return render_template("index.html")
 
-# ---------------- START of CONTENTsection -----------------
+# ---------------- START of CONTENT section -----------------
 
-@app.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST'])
 def send_content():
     text = request.values.get("comment[text]")
-    #content={"paragraph":text}   
-    prediction=model.predict_proba(text)
-    output='{0:.{1}f}'.format(prediction[0][1], 2)
+
+    print (text)
+    #content={"paragraph":text}  
+    # prediction = model.predict(text)
+
+    prediction = m.predict(text)
+
+    print (prediction)
+
+    # output='{0:.{1}f}'.format(prediction[0][1], 2)
     
-    if output==1:
-        return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(output))
+    if prediction==1:
+        return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(prediction))
     else:
-        return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(output)) 
+        return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(prediction)) 
 
 
 # ------------------ END of CONTENT section ---------------
 
 # ---------------- START of LINK here section -----------------
-@app.route('/predict',methods=['POST','GET'])
-def link_predict():
-    link= request.values.get("comment[text]")
-    #li= {"link":link}
-    prediction=model.predict_proba(link)
-    output='{0:.{1}f}'.format(prediction[0][1], 2)
+# @app.route('/predict',methods=['POST','GET'])
+# def link_predict():
+#     link= request.values.get("comment[text]")
+#     #li= {"link":link}
+#     prediction=model.predict_proba(link)
+#     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
-    if output==1:
-        return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(output))
-    else:
-        return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(output)) 
-
-    
+#     if output==1:
+#         return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(output))
+#     else:
+#         return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(output)) 
 # ------------------ END of LINK section ---------------
 
 
