@@ -22,15 +22,7 @@ Source: https://www.kaggle.com/prawn33/fake-news-detection
 '''
 
 text = '''
-""Share This Baylee Luciani (left), Screenshot of what Baylee caught on FaceTime (right) 
-The closest Baylee Luciani could get to her boyfriend, who’s attending college in Austin, was through video online chat. The couple had regular “dates” this way to bridge the 200-mile distance between them. However, the endearing arrangement quickly came to an end after his FaceTime was left on and caught something that left his girlfriend horrified. 
-Baylee had been discussing regular things with her boyfriend, Yale Gerstein, who was on the other side of the screen on an otherwise average evening. This video chat was not unlike all the others she had with Yale from his apartment near Austin Community College until the 19-year-old girlfriend heard some scratching sounds after FaceTime had been left on. 
-According to KRON , Baylee was mid-conversation with Yale when scratches at the door caught both of their attention and he got up from his bed, where the computer was, to see who was at his door. He barely turned the handle to open in when masked men entered the room and beat Yale’s face in and slammed him down on his bed while shoving a pistol in his cheek. The intruders didn’t seem to know or care that FaceTime was still on and Baylee’s face, seen in the corner, was watching everything, terrified that she was about to see her boyfriend murdered in front of her, as she watched him fight for his life. 
-Admitting that she first thought it was a joke, seconds later, she came to the horrid realization that he was being robbed and called her dad, who was at home with her in Dallas, into the room. “I was scared, because they were saying I’m going to blow your head off, I’m going to kill you,” Baylee explained along with the chilling feeling she got when the intruder finally realized the video chat was running and looked right at her in the camera. “I’m like wow… seriously watching an armed robbery happen to somebody that I care about,” she added. Screengrabs of intruder forcing Yale down on his bed while Baylee and her father watch on FaceTime in horror 
-With a clear view of at least one intruder’s face, Baylee began taking screenshots of the suspect in the act as she and her dad called the police to report what was going on. She got the pictures right in time since, seconds later, the intruder decided to disconnect the computer as he and the suspects took off with thousands of dollars worth of Yale’s music equipment. Although the boyfriend’s life was spared in the traumatizing ordeal for the two of them, he said that the thieves took something from him that can’t be replaced. 
-“I had just finished my first album as a solo artist,” Yale said. “That’s all lost,” since they took the recordings on the equipment, which means nothing to the thieves and everything to the victim. It’s not often that you hear of FaceTime solving crimes or potentially saving lives, which is what happened in this case. Although it was difficult to watch, Baylee, being there through technology, was an instrumental part in protecting Yale, who hopefully learned that he better take advantage of Texas’ great gun laws and arm himself with more than just a computer."
-"
-
+The number of cases of cops brutalizing and killing people of color seems to see no end. Now, we have another case that needs to be shared far and wide. An Alabama woman by the name of Angela Williams shared a graphic photo of her son, lying in a hospital bed with a beaten and fractured face, on Facebook. It needs to be shared far and wide, because this is unacceptable.It is unclear why Williams  son was in police custody or what sort of altercation resulted in his arrest, but when you see the photo you will realize that these details matter not. Cops are not supposed to beat and brutalize those in their custody. In the post you are about to see, Ms. Williams expresses her hope that the cops had their body cameras on while they were beating her son, but I think we all know that there will be some kind of convenient  malfunction  to explain away the lack of existence of dash or body camera footage of what was clearly a brutal beating. Hell, it could even be described as attempted murder. Something tells me that this young man will never be the same. Without further ado, here is what Troy, Alabama s finest decided was appropriate treatment of Angela Williams  son:No matter what the perceived crime of this young man might be, this is completely unacceptable. The cops who did this need to rot in jail for a long, long time   but what you wanna bet they get a paid vacation while the force  investigates  itself, only to have the officers returned to duty posthaste?This, folks, is why we say BLACK LIVES MATTER. No way in hell would this have happened if Angela Williams  son had been white. Please share far and wide, and stay tuned to Addicting Info for further updates.Featured image via David McNew/Stringer/Getty Images
 '''
 
 
@@ -50,7 +42,7 @@ def wordopt(text):
 X = df['text']
 Y = df.Label
 
-X, Y = df.Body.fillna(' '), df.Label
+X, Y = df.text.fillna(' '), df.Label
 
 #DataFlair - Split the dataset
 x_train,x_test,y_train,y_test=train_test_split(X, Y, test_size=0.2, random_state=7)
@@ -79,7 +71,7 @@ def fake_news_det(news):
     new_def_test = pd.DataFrame(input_data)
     new_def_test["text"] = new_def_test["text"].apply(wordopt) 
     new_x_test = new_def_test["text"]
-    #print(new_x_test)
+    print(type(new_x_test))
     vectorized_input_data = vectorization.transform(new_x_test)
     prediction = svm_model.predict(vectorized_input_data)
     
