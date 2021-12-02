@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /*DEFAULT*/
+    a,
+    textarea,
+    li,
+    button {
+      text-decoration: none;
+      transition: 0.5s;
+      resize: none;
+      list-style: none;
+      outline: none !important;
+    }
+
+    ul {
+      position: relative;
+      left: -20px;
+    }
+
+    p,
+    .title,
+    .sub-title {
+      line-height: 1.4em;
+      letter-spacing: 0.08em;
+      opacity: 900px;
+      font-size:larger;
+      color:#000
+    }
+
+    .btn1,
+    .btn2,
+    .btn3 {
+      padding: 10px 20px;
+      border-radius: 3px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .btn1 {
+      background: #142F43;
+    }
+
+    .btn3 {
+      background: #1e1e1e;
+    }
+
+    .btn1:hover,
+    .btn2:hover,
+    .btn3:hover {
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+    }
+
+    .title {
+      font-size: 2.4em;
+    }
+
+    .sub-title {
+      font-size: 1.3em;
+      color:#142F43;
+    }
+
+    em {
+      font-style: normal;
+      color: #681A1E;
+      font-size: medium;
+
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table td {
+      width: 50%;
+      position: relative;
+      vertical-align: top;
+  
+    }
+
+    .title_header {
+      width: 70%;
+      display: block;
+      margin: 5vh auto;
+      text-align: center;
+    }
+
+    .title_header .title {
+      font-size: 2em;
+    }
+
+    .title_header .sub-title {
+      font-size: 1em;
+      color: gray;
+      font-weight: 400;
+    }
+
+
+    /*ANIMATION*/
+    .m159 {
+      position: relative;
+    }
+
+    .ml15 .text-wrapper {
+      position: relative;
+      display: inline-block;
+      padding-right: 0.05em;
+      padding-bottom: 0.1em;
+      overflow: hidden;
+    }
+
+    .ml15 .letter {
+      transform-origin: 50% 100%;
+      display: inline-block;
+    }
+
+
+
+    /*NAVIGATION*/
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      z-index: 999;
+    }
+
+    header .banner {
+      width: 80%;
+      padding: 10px 0px;
+      color: #1e1e1e;
+    }
+
+    header .banner span:nth-child(1) a {
+      margin: 0px 5px;
+      font-size: 13px;
+      color: #000;
+    }
+
+    header .banner span:nth-child(1) em {
+      color: #000;
+    }
+
+    header .banner span:nth-child(2) a {
+      margin: 0px 5px;
+      background: #232263;
+      color: #fff;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      padding: 6px;
+      float: right;
+      text-align: center;
+      box-shadow: 0px 6px -16px 6px rgba(1, 1, 1, 0.5);
+    }
+
+    header .nav {
+      position: fixed;
+      top: 3em;
+      width: 80%;
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+      background: #fff;
+      border-radius: 40px;
+      padding: 20px;
+      transition: 0.5s;
+      border-top: 1px solid #d80b1a;
+    }
+
+    header .nav a {
+      display: inline-block;
+      margin: 0px 20px;
+      text-decoration: none;
+      color: #000;
+      transition: 0.5s;
+      font-weight: 400;
+    }
+
+    header .nav a.active {
+      box-sizing: border-box;
+      transition: all 0.2s ease-in-out;
+      appearance: none;
+      -webkit-appearance: none;
+      box-shadow: inset 0px 0px 1px #BABECC, inset -1px -1px 2px #FFF;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+    }
+
+    header .nav .dropdown li:before {
+      content: "\f0a4";
+      font-family: "FontAwesome";
+      margin: 0px 4px;
+    }
+
+    header .nav .icon {
+      display: none;
+    }
+
+    .dropbtn {
+      background: transparent;
+      border: 0;
+      outline: 0;
+      font-size: 16px;
+      margin: 0px 10px;
+      font-family: 'Yusei Magic', sans-serif;
+      transition: 0.5s;
+    }
+
+    .dropbtn:hover {
+      color: #d80b1a;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .dropdown-content:before {
+      content: "\f0d8";
+      font-family: "FontAwesome";
+      position: absolute;
+      text-align: center;
+      left: 45%;
+      top: -15px;
+      font-size: 20px;
+      color: gray;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    @media (max-width:1000px) {
+      header .nav {
+        width: 70%;
+      }
+    }
+
+    @media (max-width:920px) {
+      header .nav {
+        width: 75%;
+      }
+    }
+
+    @media (max-width:850px) {
+      header .nav {
+        width: 80%;
+      }
+    }
+
+    @media (max-width:800px) {
+      header .nav {
+        width: 90%;
+      }
+    }
+ 
+    @media (max-width:720px) {
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      header .nav {
+        height: 45px;
+        overflow-y: hidden;
+        transition: 0.5s;
+      }
+
+      header .nav a:not(:first-child) {
+        display: block;
+        margin: 15px;
+      }
+
+      header .nav a.active {
+        width: 120px;
+      }
+
+      header .nav .icon {
+        display: block;
+        float: right;
+        position: absolute;
+        right: 15px;
+        top: 0px;
+        cursor: pointer;
+      }
+
+      .dropbtn {
+        margin: 5px 8px;
+      }
+
+      .dropdown-content a {
+        margin: 5px;
+        padding: 0px;
+      }
+
+      .dropdown-content:before {
+        content: "\f0d9";
+        font-family: "FontAwesome";
+        position: absolute;
+        left: -8px;
+        color: gray;
+        top: 0px;
+      }
+
+      .dropdown-content a:nth-child(1) {
+        margin: 0px 10px;
+        padding-left: 5px;
+      }
+
+      .dropdown-content {
+        position: fixed;
+        z-index: 9;
+        left: 30%;
+        margin-top: -25px;
+      }
+    }
+
+    #navbar {
+      background-color: #fff;
+      position: fixed;
+      top: -85px;
+      width: 100%;
+      display: block;
+      z-index: 999;
+      padding: 10px 0px;
+      transition: top 0.3s;
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+    }
+
+    #navbar a {
+      float: left;
+      display: block;
+      color: #000;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    #navbar a:hover {
+      color: black;
+    }
+
+    #navbar .dropbtn {
+      background: transparent;
+      border: 0;
+      outline: 0;
+      font-size: 17px;
+      margin: 20px 10px;
+      font-family: 'Yusei Magic', sans-serif;
+      transition: 0.5s;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    #navbar .dropdown-content {
+      min-width: auto;
+      margin-top: 60px;
+    }
+
+    #navbar a:not(:first-child),
+    #navbar .dropbtn,
+    #navbar .dropdown {
+      float: right;
+    }
+
+    #navbar .dropdown a {
+      float: left;
+    }
+
+
+    @media (max-width:900px) {
+      #navbar {
+        display: none;
+      }
+
+      header .banner {
+        display: none;
+      }
+
+      header .nav a.active {
+        width: 200px;
+      }
+
+      header .nav {
+        position: fixed;
+        top: 0em;
+        width: 100%;
+        box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+        background: #fff;
+        border-radius: 0px;
+        padding: 10px;
+        transition: 0.5s;
+      }
+    }
+
+
+    /*CONTAINER*/
+    .container {
+      width: 100%;
+      height: 120vh;
+      background-image: url("https://i.ibb.co/f0YS4Yd/charset-Ascii-binary-comment.jpg");
+      background-size: 100% 100%;
+      position: relative;
+    }
+
+
+    .container img {
+      width: 79%;
+      height: auto;
+      position: relative;
+      top: 5 vh;
+      margin-left: 20px;
+    }
+
+    .container section {
+      position: absolute;
+      top: 35vh;
+      left: 2vw;
+    }
+
+    .container section .sub-title {
+      font-weight: 400;
+    }
+
+    /*SECTION1*/
+    .section1 {
+      width: 100%;
+      position: relative;
+      top: -20vh;
+    }
+
+    /*-----PRICE CARDS----*/
+
+
+    .section1 .title {
+      font-family: 'Recursive', sans-serif;
+    }
+
+    .section1 .sub-title {
+      font-family: 'Raleway', sans-serif;
+    }
+/* 
+    .no {
+      color: #c0392b;
+    } */
+
+    .not_available {
+      color: gray;
+    }
+
+    .section1 .btn1 {
+      outline: none;
+      border: 0;
+      background: #1e1e1e;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-align: center;
+      width: 150px;
+      margin: auto;
+      color: #fff;
+      transition: 0.5s;
+    }
+
+    .section1 .btn1:hover {
+      background: #000;
+    }
+
+    .price_cards {
+      width: 100%;
+      padding: 5vh 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .price_cards .card {
+      width: 25%;
+      border-radius: 30px;
+      display: inline-block;
+      padding: 2%;
+      margin: 10px;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .price_cards .card:hover {
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+      padding: 3% 2%;
+    }
+
+    .price_cards .card img {
+      width: 80px;
+      height: 100px;
+      position: absolute;
+      left: -35px;
+      top: -30px;
+    }
+
+    .badge {
+      opacity: 0;
+    }
+
+    html, body {
+  margin: 0;
+  padding: 0;
+  width:100%;
+  height: 100%;
+  background:white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+}
+
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border-radius: 0.9em;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight:100;
+  line-height: 1;
+  margin: 20px;
+  padding: 0.4em 0.9em;
+  text-decoration: none;
+  text-align: right;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+.third {
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  transition: all 150ms ease-in-out;
+}
+.third:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+
+
+    .price_cards .card .title {
+      color: #fff;
+    }
+
+    .price_cards .card .sub-title {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .price_cards .card_1 {
+      background: #bfc946;
+    }
+
+    .price_cards .card_2 {
+      background: #36cccb;
+    }
+
+    .price_cards .card_3 {
+      background: #f04e4e;
+    }
+
+
+    .price_cards .card section {
+      width: 80%;
+      margin: auto;
+      background: #fff;
+      padding: 2s0px;
+      border-radius: 30px;
+      margin-top: 8vh;
+    }
+
+    .price_cards .card section ul {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .price_cards .card section ul li {
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .price_cards .card section .btn1 {
+      position: relative;
+      top: 20px;
+    }
+
+    @media (max-width:900px) {
+      .price_cards {
+        width: 100%;
+        display: block;
+      }
+
+      .price_cards .card {
+        width: 90%;
+      }
+
+      .price_cards .card img {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+      }
+    }
+
+
+
+
+    /*SECTION2*/
+    .section2 {
+      width: 100%;
+      background: #eaeff9;
+      padding: 10vh 0;
+    }
+
+    .section2 .cards {
+      width: 95%;
+      margin: auto;
+    }
+
+    .section2 .cards .card {
+      display: inline-block;
+      margin: 20px 10px;
+
+      border-radius: 5px;
+      padding: 20px;
+      width: 28%;
+      height: 250px;
+      vertical-align: top;
+      background: #fff;
+      transition: 0.5s;
+      cursor: default;
+    }
+
+    .section2 .cards .card:hover {
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+    }
+
+    .section2 .cards .card .sub-title {
+      font-size: 1.3em;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .section2 .cards .card p {
+      color: rgba(1, 1, 1, 0.7);
+    }
+
+
+
+
+    /*SECTION3*/
+    .section3 {
+      width: 100%;
+      margin: 10vh 0;
+    }
+
+    .section3 table th,
+    .section3 table td {
+      width: 25%;
+      text-align: center;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 10px 0;
+
+    }
+
+    .section3 table td {
+      background: #f7f7f7;
+      color: #000;
+      font-weight: 400;
+    }
+
+    /*SECTION4*/
+    .section4 {
+      width: 90%;
+      box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
+      border-radius: 20px;
+      background: #7f190c;
+      padding: 20px;
+      margin: auto;
+      position: relative;
+      top: 5vh;
+      color: #fff;
+    }
+
+    .section4 .cards {
+      width: 100%;
+    }
+
+    .section4 .cards .card {
+      width: 30%;
+      margin: 15px;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    .section4 .cards .card .sub-title {
+      font-size: 1em;
+      color: #fff;
+      text-align: center;
+      font-weight: 500;
+      padding: 10px;
+      border-radius: 40px 0px 40px 0px;
+      background: #fbc01a;
+    }
+
+    .section4 .cards .card p {
+      font-weight: 200;
+    }
+
+
+    @media (max-width:820px) {
+      .container table td {
+        display: block;
+        width: 99%;
+      }
+
+      .title {
+        font-size: 1.5em;
+      }
+
+      .sub-title {
+        font-size: 1em;
+      }
+
+      .title_header {
+        width: 95%;
+      }
+
+      .title_header .title {
+        font-size: 1.3em;
+      }
+
+      .title_header .sub-title {
+        font-size: 0.8em;
+      }
+
+      .container section {
+        position: relative;
+        top: 20vh;
+        height: 60vh;
+      }
+
+      .container img {
+        width: 100%;
+        position: relative;
+        top: 10vh;
+        align-items:right;
+      }
+
+      .section2 .cards .card {
+        display: block;
+        width: 85%;
+      }
+
+      .section3 table th,
+      .section3 table td {
+        min-width: 25%;
+        width: 25%;
+        text-align: center;
+        background: #1e1e1e;
+        color: #fff;
+        padding: 10px 5px;
+        font-size: 13px;
+      }
+
+      .section4 {
+        position: relative;
+        top: 0;
+      }
+
+      .section4 .cards .card {
+        width: 95%;
+      }
+    }
+    body {background: #F0F0F0;}
+
+
+h2 {margin-left: 55px;}
+
+textarea {
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 500px;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+
+    /*FOOTER*/
+    .footer {
+      background: #000;
+      padding: 30px 0px;
+      font-family: 'Play', sans-serif;
+      text-align: center;
+    }
+
+    .footer .row {
+      width: 100%;
+      margin: 1% 0%;
+      padding: 0.6% 0%;
+      color: gray;
+      font-size: 0.8em;
+    }
+
+    .footer .row a {
+      text-decoration: none;
+      color: gray;
+      transition: 0.5s;
+    }
+
+    .footer .row a:hover {
+      color: #fff;
+    }
+
+    .footer .row ul {
+      width: 100%;
+    }
+
+    .footer .row ul li {
+      display: inline-block;
+      margin: 0px 30px;
+    }
+
+    .footer .row a i {
+      font-size: 2em;
+      margin: 0% 1%;
+    }
+
+    @media (max-width:720px) {
+      .footer {
+        text-align: left;
+        padding: 5%;
+      }
+
+      .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+      }
+
+      .footer .row a i {
+        margin: 0% 3%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>YoursFakely|Home|</title>
+
+    <!--EXTERNAL CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icon.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;800&display=swap" rel="stylesheet">
+
+    <!--PLUGIN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <header>
+      <div id="navbar">
+        <a href="#"><i class="fa fa-user"></i> Login</a>
+        <a href="yourfakely@gmail.com"><em style="color:#0a4936">Email</em> : yourfakely@gmail.com</a>    
+        <a href="tel:XXXXXXX"><em style="color:#0a4936">Contact us</em> : XX-XXXX-XXXXX</a>
+  
+      </div>
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container">
+      <table>
+        <tr>
+          <td>
+            <img src="manthan.png" alt="YoursFakely logo" width="50">
+            <br>
+            <section>
+             <h5 class="sub-title" style="margin-top: -3rem;"><b>The highly accurate platform to detect online fake content.</b></h5>
+    
+              <h1 class="title ml15">
+                <span class="text-wrapper">
+                  <span class="letters">Identifying the false in a Jiffy!</span>
+                </span>
+              </h1>
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left: 45rem;font-size: larger;"><b>Paste your CONTENT here</a>
+              <br><br>
+              <textarea placeholder="Paste your content here." rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"
+                style = "margin-top: 10px;
+              margin-left: 38rem"></textarea>
+
+              <button class="btn third" style="margin-right: 20px ; margin-left: 50rem; color:#142F43"> Predict</button>
+              <h5 class="sub-title" style="margin-left: 42rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+              </b></h5>
+              <br>
+
+              <a href="#" class="btn1" style="margin-right: 30px; margin-left:47rem;font-size: larger;"><b>Paste your LINK here</a></b>
+              <br><br>
+              <textarea placeholder="Paste your link here." rows="1" name="comment[text]" id="comment_text" cols="1" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" 
+              style = "margin-top: 10px;
+              margin-left: 38rem;
+              width: 500px;
+              height: 40px;"></textarea>
+
+              <button class="btn third" style="margin-right: 20px ; margin-left: 51rem; color:#142F43"> Predict</button>
+              <h5 class="sub-title" style="margin-left: 46rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+                <br><br><br>
+            </section>
+          </td>
+          <td>
+            <img src="fake_2.jpg" alt="" style="width:60%; margin-top:-10 vh; height: auto;
+            position: relative; margin-left:-46rem;margin-right:20 rem">
+            <img src="fake.jpg" alt="" style="width:50%; margin-top:20 vh; margin-bottom:40vh; height: auto;
+            position: relative; margin-left: 30rem; margin-right:20 rem">
+
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br><br><br><br><br>
+    <hr class="hr-17" style="
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
+    ">
+<br><br><br><br><br><br><br><br><br><br><br>
+
+    <!--SECTION1-->
+    <section class="section1">
+      <!--******PRICE CARDS******-->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Raleway:wght@300&family=Recursive:wght@500&display=swap"
+        rel="stylesheet">
+        <div class="title_header">
+          <h1 class="title">YoursFakely provides the best features!</h1>
+        </div>
+  
+      <div class="price_cards">
+        <!--CARD_BEGINING-->
+        <div class="card card_1">
+          <h3 class="title"><i class="fa fa-rocket"></i> Quick Results</h3>
+          <section>
+            <ul>
+              <li> Results predicted in a jiffy.</li>
+              <li> User friendly </li>
+            </ul>
+          </section>
+        </div>
+        <!--CARD_ENDS-->
+        <!--CARD_BEGINING-->
+        <div class="card card_2">
+
+          <h3 class="title"><i class="fa fa-check-circle" aria-hidden="true"></i>
+            Authentic </h3>
+          <section>
+            <ul>
+              <li> Provides "Authentic" results</li>
+              <li> Accuracy values displayed</li>
+            </ul>
+          </section>
+        </div>
+        <!--CARD_ENDS-->
+        <!--CARD_BEGINING-->
+        <div class="card card_3">
+          <h3 class="title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Metrics </h3>
+          <section>
+            <ul>
+              <li> Accuracy values mentioned</li>
+              <li> Pictorial representation</li>
+            </ul>
+
+          </section>
+        </div>
+        <!--CARD_ENDS-->
+      </div>
+    </section>
+
+
+    <!--FOOTER-->
+    <footer>
+      <div class="footer" style="margin-top: -10rem;">
+        <div class="row">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+
+
+        <div class="row">
+          Copyright © 2021 YoursFakely- All rights reserved
+        </div>
+      </div>
+    </footer>
+
+
+    <!--JAVASCRIPT-->
+    <script src="js/custom.js"></script>
+    <script>
+      // Wrap every letter in a span
+      var textWrapper = document.querySelector('.ml15 .letters');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+      anime.timeline({
+          loop: true
+        })
+        .add({
+          targets: '.ml15 .letter',
+          scale: [0, 1],
+          duration: 1500,
+          elasticity: 600,
+          delay: (el, i) => 45 * (i + 1)
+        }).add({
+          targets: '.ml15',
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        });
+
+
+      //NAVIGATION
+
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          if (window.matchMedia('screen and (max-width: 768px)').matches) {
+
+          } else {
+            document.getElementById("navbar").style.top = "0";
+            document.getElementById("nav").style.display = "none";
+          }
+        } else {
+          if (window.matchMedia('screen and (max-width: 768px)').matches) {
+
+          } else {
+            document.getElementById("navbar").style.top = "-85px";
+            document.getElementById("nav").style.display = "block";
+          }
+        }
+      }
+
+      var count = 0;
+
+      function opennav() {
+        if (count == 0) {
+          document.getElementById("nav").style.height = "240px";
+          document.getElementById("icon").style.color = "#3399ff";
+          count++;
+        } else {
+          document.getElementById("nav").style.height = "45px";
+          document.getElementById("icon").style.color = "#000";
+          count = 0;
+        }
+      }
+    </script>
+  </body>
+
+  </html>
+</body>
+
+</html>
