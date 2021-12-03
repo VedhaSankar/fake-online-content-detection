@@ -28,11 +28,12 @@ def send_content():
 
     # output='{0:.{1}f}'.format(prediction[0][1], 2)
     
-    if prediction==1:
-        return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(prediction))
-    else:
-        return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(prediction)) 
+    # if prediction==1:
+    #     return render_template('index.html',pred='The content is AUTHENTIC with an accuracy of {}'.format(prediction))
+    # else:
+    #     return render_template('index.html',pred='The content is fake with an accuracy of {}'.format(prediction)) 
 
+    return render_template("index.html", prediction = prediction)
 
 # ------------------ END of CONTENT section ---------------
 

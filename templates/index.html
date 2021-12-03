@@ -972,11 +972,23 @@ textarea:focus {
               margin-left: 17rem"></textarea>
 
               <button class="btn third" style="margin-right: 20px ; margin-left: 30rem; color:#142F43"> Predict</button>
-  
+              
               <br>
 
               </form>
-              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+
+              {% if prediction == 1 %}
+                  <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+
+              {% endif %}
+
+              {% if prediction == 0 %}
+                  <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+
+              {% endif %}
+
+
+              <!-- <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i> -->
                           
               </b></h5>
               <a href="#" class="btn1" style="margin-right: 30px; margin-left: 17rem;font-size: larger;"><b>Paste your LINK here</a></b>
@@ -988,7 +1000,7 @@ textarea:focus {
               height: 40px;"></textarea>
 
               <button class="btn third" style="margin-right: 20px ; margin-left: 30rem; color:#142F43"> Predict</button>
-              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+              <!-- <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i> -->
                 <br><br><br>
             </section>
           </td>
