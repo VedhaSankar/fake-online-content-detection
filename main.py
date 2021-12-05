@@ -1,67 +1,27 @@
-import numpy as np 
-import pandas as pd
-from sklearn import svm 
-
-
-from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
-import re
+from flask import Flask,request, url_for, redirect, render_template, request
 import pickle
+from validate import fake_news_det as detect
 
-def wordopt(text):
+app = Flask(__name__)
 
-    ps = PorterStemmer()
+model = pickle.load(open('model_svm.pkl','rb'))
 
 
-    text = re.sub('[^a-zA-Z]', ' ',text)
+@app.route('/')
+def home():
 
-    text = text.lower()
+    return render_template("index.html")
 
-    text = text.split()
 
-    text = [ps.stem(word) for word in text if not word in stopwords.words('english')]
+@app.route('/predict', methods = ['post'])
+def send_content():
 
-    text = ' '.join(text)
+    text = request.values.get("news")
 
-    return text
+    prediction = detect(text)
 
-def load_model():
+    return render_template("index.html", prediction = prediction)
 
-    with open('model_svm.pkl','rb') as f:
+if __name__ == "__main__":
 
-        model = pickle.load(f)
-
-    with open('vectorizer.pkl','rb') as f:
-
-        vectorizer = pickle.load(f)
-    
-    return (model, vectorizer)
-
-def predict(news):
-
-    svm_model, vectorizer = load_model()
-
-    input_data = {
-        "text": [news]
-    }
-
-    new_def_test = pd.DataFrame(input_data)
-
-    new_def_test["text"] = new_def_test["text"].apply(wordopt) 
-
-    new_x_test = new_def_test["text"]
-
-    # print(type(new_x_test))
-
-    vectorized_input_data = vectorizer.transform(new_x_test)
-
-    prediction = svm_model.predict(vectorized_input_data)
-    
-    if prediction == 1:
-
-        return 1
-
-    else:
-
-        return 0
-
+    app.run(debug = True,host="0.0.0.0")
