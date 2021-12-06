@@ -14,14 +14,17 @@ links = [
     "https://timesofindia.indiatimes.com/india/to-test-vaccine-efficacy-icmr-isolating-omicron-strain/articleshow/88112063.cms"
 ]
 
+for link in links:
 
-url_text = requests.get(LINK).text
-soup = BeautifulSoup(url_text,'lxml')
+    url_text = requests.get("https://timesofindia.indiatimes.com/spotlight/transform-your-career-with-isb-executive-educations-applied-business-analytics-programme/articleshow/88052204.cms").text
+    soup = BeautifulSoup(url_text,'lxml')
 
-# text = url_text.find_all("div", class_ = "header-main__wrapper")
+    # text = url_text.find_all("div", class_ = "header-main__wrapper")
 
-for para in soup.find_all("p"):
-    print(para.get_text())
+    for para in soup.find_all("p"):
+        print(para.get_text())
+
+    print("-" * 50, "\n")
 
 
 # for para in url_text.find("p"):
