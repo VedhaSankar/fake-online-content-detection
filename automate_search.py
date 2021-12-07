@@ -15,3 +15,6 @@ browser = webdriver.Chrome(chrome_driver)
   
 for i in range(1):
     matched_elements = browser.get("https://www.google.com/search?q=" +search_string + "&start=" + str(i))
+
+#obj="("https://www.google.com/search?q=" +search_string + "&start=" + str(0))"
+#print(obj)
