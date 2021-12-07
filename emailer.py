@@ -20,7 +20,7 @@ smtp.login(sender_address, sender_pass)
 
 msg = MIMEMultipart()
 msg['Subject'] = "subject"
-msg.attach(MIMEText("look what you made me do"))
+msg.attach(MIMEText("Journey of a 1000 miles begins withs a single step!"))
 
 
 # img_data = open(one_img, 'rb').read()
