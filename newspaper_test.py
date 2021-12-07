@@ -1,19 +1,37 @@
 from newspaper import Article
-import feedparser
+from requests.api import delete
+# import feedparser
 from validate import fake_news_det as detect
 
 
-# url = 'https://timesofindia.indiatimes.com/india/parliament-winter-session-live-updates/liveblog/88113566.cms'
-url = input ("Enter url: ")
-article = Article(url)
+def detect_link(url):
 
-article.download()
+    # url = input ("Enter url: ")
+    article = Article(url)
 
-article.parse()
+    article.download()
 
-content = article.text
+    article.parse()
 
-print (detect(content))
+    content = article.text
+
+    pred = detect(content)
+
+    return pred
+
+
+def test():
+
+    url = "https://timesofindia.indiatimes.com/videos/entertainment/hindi/katrina-kaif-to-wear-a-pastel-green-lehenga-designed-by-sabyasachi-for-her-wedding-with-vicky-kaushal/videoshow/88145924.cms"
+
+    pred = detect_link(url)
+
+    print (pred)
+
+
+if __name__=='__main__':
+
+    test()
 
 
 # NewsFeed = feedparser.parse(url)
