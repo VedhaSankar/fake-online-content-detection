@@ -40,10 +40,10 @@ X, Y = df.text.fillna(' '), df.Label
 # Split the dataset
 x_train,x_test,y_train,y_test=train_test_split(X, Y, test_size=0.2, random_state=7)
 
-data = {
-        # "title" : [title],
-        "text"  : text
-}
+# data = {
+#         # "title" : [title],
+#         "text"  : text
+# }
 
 vectorization = TfidfVectorizer()
 
@@ -55,7 +55,7 @@ xv_test = vectorization.transform(x_test)
 
 # print (xv_test)
 
-svm_model = SVC(kernel='linear')
+svm_model = SVC(kernel = 'linear')
 svm_model.fit(xv_train,y_train)
 
 svm_y_pred = svm_model.predict(xv_test)
