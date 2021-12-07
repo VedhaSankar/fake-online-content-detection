@@ -22,7 +22,7 @@ def detect_link(url):
 
 def test():
 
-    url = "https://timesofindia.indiatimes.com/videos/entertainment/hindi/katrina-kaif-to-wear-a-pastel-green-lehenga-designed-by-sabyasachi-for-her-wedding-with-vicky-kaushal/videoshow/88145924.cms"
+    url = "https://timesofindia.indiatimes.com/business/cryptocurrency/bitcoin/proposed-bill-banning-crypto-payments-could-mean-jail-for-violations-report/articleshow/88145125.cms"
 
     pred = detect_link(url)
 
