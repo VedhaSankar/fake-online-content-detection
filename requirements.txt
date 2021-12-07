@@ -4,3 +4,4 @@ sklearn
 flask
 nltk
 newspaper3k
+feedparser
