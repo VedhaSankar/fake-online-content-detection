@@ -9,3 +9,4 @@ python-dotenv
 bs4
 lxml
 selenium
+flask_mail
