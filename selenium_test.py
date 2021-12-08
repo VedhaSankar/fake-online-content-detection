@@ -7,7 +7,7 @@ load_dotenv()
 
 DRIVER_PATH = os.environ.get('DRIVER_PATH')  
 
-driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+driver = webdriver.Chrome(executable_path = DRIVER_PATH)
 driver.get("http://www.google.com")
 
 
@@ -25,3 +25,6 @@ element = driver.find_element_by_link_text("News")
 
 element.click()
 
+get_url = driver.current_url
+
+print(get_url)
