@@ -1,5 +1,5 @@
 from flask import Flask,request, url_for, redirect, render_template
-import pickle
+import pickle 
 import main as m
 
 app = Flask(__name__)
@@ -17,6 +17,7 @@ def send_content():
     text = request.values.get("comment[text]")
 
     print (text)
+
     prediction = m.predict(text)
 
     print (prediction)
@@ -25,5 +26,3 @@ def send_content():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-

@@ -30,7 +30,7 @@ soup = BeautifulSoup(html_document, 'html.parser')
 
 #print(soup.find_all('a', attrs={'href': re.compile("^https://")}))
 
-list_=[]
+list_ = []
 
 for link in soup.find_all('a',attrs={'href': re.compile("^https://")}):
     # display the actual urls

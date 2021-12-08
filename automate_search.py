@@ -12,7 +12,7 @@ search_string = search_string.replace(' ', '+')
 # like geckodriver for Mozilla Firefox can be used
 chrome_driver=r"C:\Users\Rahaarum\Desktop\driver\chromedriver"
 browser = webdriver.Chrome(chrome_driver)
-  
+    
 for i in range(1):
     matched_elements = browser.get("https://www.google.com/search?q=" +search_string + "&start=" + str(i))
 
