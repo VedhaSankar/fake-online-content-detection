@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
 from bs4 import BeautifulSoup
+from newspaper_test import get_content
 import requests
 
 from validate import main
@@ -53,20 +54,12 @@ def get_required_links():
     soup = get_google_soup()
 
     main_div = soup.find("div", {"id": "main"})
-    # search = main_div.findChildren("div", {"id": "search"}, recursive=True)
-    # rcnt = search.find("div", {"id": "rso"})
-
-    # print (main_div)
 
     all_links =  main_div.find_all('a')
 
     links = []
 
-    # print (links)
-
     for a_link in all_links:
-
-        # print(a_link['href'])
 
         a_link = a_link['href']
 
@@ -83,6 +76,8 @@ def get_required_links():
     return links
 
 def get_content_of_link():
+
+    # call the get_content function??? idk figure this out 
 
     pass
 

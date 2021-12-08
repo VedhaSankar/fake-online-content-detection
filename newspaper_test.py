@@ -4,9 +4,8 @@ from requests.api import delete
 from validate import fake_news_det as detect
 
 
-def detect_link(url):
+def get_content(url):
 
-    # url = input ("Enter url: ")
     article = Article(url)
 
     article.download()
@@ -15,10 +14,19 @@ def detect_link(url):
 
     content = article.text
 
+    return content
+
+
+def detect_link(url):
+
+    # url = input ("Enter url: ")
+
+    content = get_content(url)
+
     pred = detect(content)
 
     return pred
-
+    
 
 def test():
 
