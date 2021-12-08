@@ -5,3 +5,7 @@ flask
 nltk
 newspaper3k
 feedparser
+python-dotenv
+bs4
+lxml
+selenium
