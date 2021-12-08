@@ -28,6 +28,7 @@ soup = BeautifulSoup(html_document, 'html.parser')
 # find all the anchor tags with "href"
 # attribute starting with "https://"
 
-for link in soup.find_all('"a"',attrs={'href': re.compile("^https://")}):
+#for link in soup.find_all('a',attrs={'href': re.compile("^https://")}):
+for link in soup.find_all('cite',attrs={'href': re.compile("^https://")}):
 	# display the actual urls
 	print(link.get('href'))

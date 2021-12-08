@@ -21,3 +21,4 @@ for i in range(1):
 
 #obj="("https://www.google.com/search?q=" +search_string + "&start=" + str(0))"
 #print(obj)
+scraped_links=[""]
