@@ -53,21 +53,43 @@ def get_required_links():
     soup = get_google_soup()
 
     main_div = soup.find("div", {"id": "main"})
-    # cnt = main_div.find("div", {"id": "cnt"})
-    # rcnt = cnt.find("div", {"id": "rcnt"})
-
-
+    # search = main_div.findChildren("div", {"id": "search"}, recursive=True)
+    # rcnt = search.find("div", {"id": "rso"})
 
     # print (main_div)
 
-    # links =  main_div.find_all('a')
+    all_links =  main_div.find_all('a')
+
+    links = []
 
     # print (links)
+
+    for a_link in all_links:
+
+        # print(a_link['href'])
+
+        a_link = a_link['href']
+
+        if a_link.startswith("/url?q="):
+
+            link = a_link.split("/url?q=")[1]
+
+            links.append(link)
+
+        if len(links) == 10:
+
+            break
+
+    return links
+
+def get_content_of_link():
+
+    pass
 
 
 def start():
 
-    get_required_links()
+    get_content_of_link()
 
 
 
