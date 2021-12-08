@@ -40,6 +40,8 @@ def get_google_soup():
 
     cur_url = driver.current_url
 
+    print (cur_url)
+
     url_text = requests.get(cur_url).text
     soup = BeautifulSoup(url_text,'lxml')
 
@@ -50,9 +52,13 @@ def get_required_links():
 
     soup = get_google_soup()
 
-    main_div = soup.find("div", {"id": "rso"})
+    main_div = soup.find("div", {"id": "main"})
+    # cnt = main_div.find("div", {"id": "cnt"})
+    # rcnt = cnt.find("div", {"id": "rcnt"})
 
-    print (main_div)
+
+
+    # print (main_div)
 
     # links =  main_div.find_all('a')
 
