@@ -1,5 +1,6 @@
 import pandas as pd 
 
+# Merging 2 datasets to create a bigger one!
 
 # Formating first dataframe
 

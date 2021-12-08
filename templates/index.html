@@ -1050,7 +1050,7 @@ textarea:focus {
               <br><br>
               <form action="/" method="POST">
                 
-                <textarea placeholder="Paste your content here."  rows="20" name="news" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"
+                <textarea placeholder="Paste your content here."  rows="20" name="news_content" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"
                 style = "margin-top: 10px;
               margin-left: 17rem"></textarea>
 
@@ -1060,23 +1060,15 @@ textarea:focus {
 
               </form>
 
-              {% if prediction == 1 %}
-                  <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
-
-              {% endif %}
-
-              {% if prediction == 0 %}
-                  <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
-
-              {% endif %}
-
-
               <!-- <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i> -->
                           
               </b></h5>
               <a href="#" class="btn1" style="margin-right: 30px; margin-left: 17rem;font-size: larger;"><b>Paste your LINK here</a></b>
               <br><br>
-              <textarea placeholder="Paste your link here." rows="1" name="comment[text]" id="comment_text" cols="1" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" 
+
+              <form action="/" method="POST">
+
+              <textarea placeholder="Paste your link here." rows="1" name="news_link" id="comment_text" cols="1" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" 
               style = "margin-top: 10px;
               margin-left: 17rem;
               width: 500px;
@@ -1084,7 +1076,21 @@ textarea:focus {
 
               <button class="btn third" style="margin-right: 20px ; margin-left: 30rem; color:#142F43"> Predict</button>
               <!-- <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i> -->
-                <br><br><br>
+                
+              
+                
+              </form>
+
+              {% if prediction == 1 %}
+              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+
+          {% endif %}
+
+          {% if prediction == 0 %}
+              <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+
+          {% endif %}
+              <br><br><br>
             </section>
           </td>
           <td>

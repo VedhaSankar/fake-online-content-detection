@@ -1,6 +1,7 @@
 from flask import Flask,request, url_for, redirect, render_template, request
 import pickle
-from validate import fake_news_det as detect
+from validate import fake_news_det as detect_content
+from newspaper_test import detect_link
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -37,8 +38,17 @@ mail = Mail(app)
 def home():
 
     if request.method == "POST":
-        text = request.values.get("news")
-        prediction = detect(text)
+        try:
+            content = request.values.get("news_content")
+            prediction = detect_content(content)
+        except:
+            pass
+        try:
+            link = request.values.get("news_link")
+            prediction = detect_link(link)
+        except:
+            pass
+        
         return render_template("index.html", prediction = prediction)
 
     return render_template("index.html")
