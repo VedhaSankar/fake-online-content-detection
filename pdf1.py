@@ -23,7 +23,8 @@ for link in (p):
 
 print(list_of_pdf)
 
-#Saving pdf
-data = urllib.request.urlretrieve(data[0])
+# #Saving pdf
 # data = urllib.request.urlretrieve(link)
+data = urllib.request.urlretrieve(data[0])
+
 
