@@ -13,8 +13,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import re
 
-from pyteaser import SummarizeUrl
-
+import yake
 
 
 # python -m spacy download en_core_web_sm
@@ -31,7 +30,7 @@ chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 
-driver = webdriver.Chrome(options=chrome_options, executable_path = DRIVER_PATH)
+driver = webdriver.Chrome(options = chrome_options, executable_path = DRIVER_PATH)
 driver.get("http://www.google.com")
 
 
@@ -106,32 +105,52 @@ def get_search_string(content):
 
     print(doc.ents)
 
-def summarize(url):
+def summarize(text):
 
-    summaries = SummarizeUrl(url)
-    print (summaries)
+    # text = """ The couple took their seven pheras on Thursday afternoon, a source told ANI. The wedding, being held at Six Senses, Fort Barwara in Sawai Madhopur, Rajasthan, has been something of a state secret with guests subjected to a no-phone and no-photos rule. No inside pictures or footage is available; however, it is believed that a mehendi ceremony took place on Tuesday as well as a traditional Punjabi 'ladies sangeet' organised by Vicky's mom Veena Kaushal. A haldi ceremony was held on Wednesday followed by a poolside sangeet. The wedding today is believed to have been preceded by a sehrabandi for Vicky.
+    # """
+    language = "en"
+
+    max_ngram_size = 3
+
+    deduplication_threshold = 0.9
+
+    numOfKeywords = 5
+
+    custom_kw_extractor = yake.KeywordExtractor(lan = language, n = max_ngram_size, dedupLim = deduplication_threshold, top = numOfKeywords, features = None)
+
+    keywords = custom_kw_extractor.extract_keywords(text)
+
+    kwd = []
+
+    for kw in keywords:
+
+        key, score = kw
+
+        kwd.append(key)
+
+    print (kwd)
 
 
 def start():
 
     sample_content = '''
+        In a moment of instant Ashes infamy, Rory Burns was bowled by Mitchell Starc from the very first delivery of the series, immediately sapping English optimism in Brisbane.
 
-    In a moment of instant Ashes infamy, Rory Burns was bowled by Mitchell Starc from the very first delivery of the series, immediately sapping English optimism in Brisbane.
+        With skipper Joe Root falling for nought, England were 11-3, having opted to bat on a green-tinged pitch offering assistance to the pace bowlers.
 
-With skipper Joe Root falling for nought, England were 11-3, having opted to bat on a green-tinged pitch offering assistance to the pace bowlers.
+        Australia's attack was relentless, led by Pat Cummins, who claimed 5-38 on his first day as captain.
 
-Australia's attack was relentless, led by Pat Cummins, who claimed 5-38 on his first day as captain.
+        Jos Buttler mounted an England counter-attack of sorts with 39, sharing a stand of 52 with Ollie Pope, who made 35.
 
-Jos Buttler mounted an England counter-attack of sorts with 39, sharing a stand of 52 with Ollie Pope, who made 35.
+        Haseeb Hameed, with a watchful 25, and Chris Woakes, who made 21, were the only other batters to reach double figures.
 
-Haseeb Hameed, with a watchful 25, and Chris Woakes, who made 21, were the only other batters to reach double figures.
+        The miserable batting display detracted from the decision to omit Stuart Broad, joining fellow pace bowler James Anderson on the sidelines, the first time in 15 years England have played an Ashes Test without at least one of them.
+    '''
 
-The miserable batting display detracted from the decision to omit Stuart Broad, joining fellow pace bowler James Anderson on the sidelines, the first time in 15 years England have played an Ashes Test without at least one of them.
-            '''
+    # url = 'http://www.huffingtonpost.com/2013/11/22/twitter-forward-secrecy_n_4326599.html'
 
-    url = 'http://www.huffingtonpost.com/2013/11/22/twitter-forward-secrecy_n_4326599.html'
-
-    summarize(url)
+    summarize(sample_content)
 
     # search_string = "omicon"
 
