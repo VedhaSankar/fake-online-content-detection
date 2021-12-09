@@ -7,7 +7,15 @@ from bs4 import BeautifulSoup
 from newspaper_test import get_content
 import requests
 import spacy
-from validate import main
+
+# NLP libraries to clean the text data
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+import re
+
+from pyteaser import SummarizeUrl
+
+
 
 # python -m spacy download en_core_web_sm
 
@@ -92,26 +100,42 @@ def get_content_of_link(search_string):
 
 def get_search_string(content):
 
-    nlp = spacy.load("en_core_sci_lg")
+    nlp = spacy.load('en_core_web_sm')
 
     doc = nlp(content)
 
     print(doc.ents)
 
+def summarize(url):
+
+    summaries = SummarizeUrl(url)
+    print (summaries)
+
 
 def start():
 
-    # sample_content = '''
-    #     spaCy is an open-source software library for advanced natural language processing, 
-    #     written in the programming languages Python and Cython. The library is published under the MIT license
-    #     and its main developers are Matthew Honnibal and Ines Montani, the founders of the software company Explosion.
-    # '''
+    sample_content = '''
 
-    # get_search_string(sample_content)
+    In a moment of instant Ashes infamy, Rory Burns was bowled by Mitchell Starc from the very first delivery of the series, immediately sapping English optimism in Brisbane.
 
-    search_string = "omicon"
+With skipper Joe Root falling for nought, England were 11-3, having opted to bat on a green-tinged pitch offering assistance to the pace bowlers.
 
-    print (get_required_links(search_string))
+Australia's attack was relentless, led by Pat Cummins, who claimed 5-38 on his first day as captain.
+
+Jos Buttler mounted an England counter-attack of sorts with 39, sharing a stand of 52 with Ollie Pope, who made 35.
+
+Haseeb Hameed, with a watchful 25, and Chris Woakes, who made 21, were the only other batters to reach double figures.
+
+The miserable batting display detracted from the decision to omit Stuart Broad, joining fellow pace bowler James Anderson on the sidelines, the first time in 15 years England have played an Ashes Test without at least one of them.
+            '''
+
+    url = 'http://www.huffingtonpost.com/2013/11/22/twitter-forward-secrecy_n_4326599.html'
+
+    summarize(url)
+
+    # search_string = "omicon"
+
+    # print (get_required_links(search_string))
 
     # get_content_of_link()
 

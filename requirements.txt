@@ -11,3 +11,6 @@ lxml
 selenium
 flask_mail
 spacy
+transformers
+sentencepiece
+torch
