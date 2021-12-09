@@ -5,12 +5,12 @@
 - UI
     - Html
     - Css
-    - Flask
+    - Javascript
 
+- Flask
 - Python
 - Machine Learning
-- Flask
-- ML Libraries
+- ML Libraries < list is endless :) >
 - Selenium
 - Beautiful Soup
 
