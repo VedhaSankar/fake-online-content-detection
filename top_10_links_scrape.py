@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 from newspaper_test import detect_link, get_content
 import requests
 import spacy
+from similarity import check_similarity
+
 
 # NLP libraries to clean the text data
 from nltk.corpus import stopwords
@@ -95,7 +97,7 @@ def get_content_of_link(search_string):
 
         content_list.append(content)
 
-    print (content_list)
+    return content_list
 
 def get_keyword_list(text):
 
@@ -126,33 +128,29 @@ def get_keyword_list(text):
 
 def start():
 
-    sample_content = '''
-        In a moment of instant Ashes infamy, Rory Burns was bowled by Mitchell Starc from the very first delivery of the series, immediately sapping English optimism in Brisbane.
-
-        With skipper Joe Root falling for nought, England were 11-3, having opted to bat on a green-tinged pitch offering assistance to the pace bowlers.
-
-        Australia's attack was relentless, led by Pat Cummins, who claimed 5-38 on his first day as captain.
-
-        Jos Buttler mounted an England counter-attack of sorts with 39, sharing a stand of 52 with Ollie Pope, who made 35.
-
-        Haseeb Hameed, with a watchful 25, and Chris Woakes, who made 21, were the only other batters to reach double figures.
-
-        The miserable batting display detracted from the decision to omit Stuart Broad, joining fellow pace bowler James Anderson on the sidelines, the first time in 15 years England have played an Ashes Test without at least one of them.
-    '''
-
-    url = "https://timesofindia.indiatimes.com/business/cryptocurrency/bitcoin/proposed-bill-banning-crypto-payments-could-mean-jail-for-violations-report/articleshow/88145125.cms"
+    url = "https://www.ndtv.com/world-news/coronavirus-new-variant-covid-19-vaccination-on-omicron-who-shares-a-new-concern-2644260#pfrom=home-ndtv_topscroll"
 
     content = get_content(url)
 
     keyword_list = get_keyword_list(content)
 
-    print(keyword_list)
+    # print(keyword_list)
+
+    content_list = []
 
     for keyword in keyword_list:
 
-        get_content_of_link(keyword)
+        cnt_list = get_content_of_link(keyword)
 
-        
+        for cnt in cnt_list:
+
+            if cnt is not None:
+
+                content_list.append(cnt)
+
+    print (content_list)
+
+    # check_similarity()
 
     # search_string = "omicon"
 
