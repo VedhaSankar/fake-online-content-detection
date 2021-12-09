@@ -6,12 +6,16 @@ import os
 from bs4 import BeautifulSoup
 from newspaper_test import get_content
 import requests
-
+import spacy
 from validate import main
+
+# python -m spacy download en_core_web_sm
 
 load_dotenv()
 
 DRIVER_PATH = os.environ.get('DRIVER_PATH')  
+
+# nlp = spacy.load("en_core_sci_lg")
 
 # Making it headless
 chrome_options = Options()
@@ -23,10 +27,7 @@ driver = webdriver.Chrome(options=chrome_options, executable_path = DRIVER_PATH)
 driver.get("http://www.google.com")
 
 
-def get_google_soup(): 
-
-    search_string = "omicon"
-    
+def get_google_soup(search_string):     
 
     search_string = search_string.replace(' ', '+') 
     
@@ -49,9 +50,9 @@ def get_google_soup():
     return soup
 
 
-def get_required_links():
+def get_required_links(search_string):
 
-    soup = get_google_soup()
+    soup = get_google_soup(search_string)
 
     main_div = soup.find("div", {"id": "main"})
 
@@ -75,16 +76,44 @@ def get_required_links():
 
     return links
 
-def get_content_of_link():
+def get_content_of_link(search_string):
 
-    # call the get_content function??? idk figure this out 
+    links = get_required_links(search_string)
 
-    pass
+    content_list = []
+
+    for link in links:
+
+        content = get_content(link)
+
+        content_list.append(content)
+
+    print (content_list)
+
+def get_search_string(content):
+
+    nlp = spacy.load("en_core_sci_lg")
+
+    doc = nlp(content)
+
+    print(doc.ents)
 
 
 def start():
 
-    get_content_of_link()
+    sample_content = '''
+        spaCy is an open-source software library for advanced natural language processing, 
+        written in the programming languages Python and Cython. The library is published under the MIT license
+        and its main developers are Matthew Honnibal and Ines Montani, the founders of the software company Explosion.
+    '''
+
+    get_search_string(sample_content)
+
+    # search_string = "omicon"
+
+    # get_required_links(search_string)
+
+    # get_content_of_link()
 
 
 
