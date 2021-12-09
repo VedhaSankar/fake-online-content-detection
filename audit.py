@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import re
+import json
 
 # Fetching the HTML
 URL = 'https://www.blueclaw.co.uk'
@@ -30,6 +32,20 @@ class SeoAudit:
         leading or trailing whitespace.
         '''
         return title_tag.get_text().strip()
+
+    def get_seo_data(self):
+        return {
+            'title': self.get_title(),
+            # 'metaDescription': self.get_meta_description(),
+            # 'h1': self.get_first_h1(),
+            # 'internalLinks': self.find_links('internal'),
+            # 'internalLinksCount': len(self.find_links('internal')),
+            # 'externalLinks': self.find_links('external'),
+            # 'externalLinksCount': len(self.find_links('external')),
+        }
     
 page = SeoAudit('https://www.blueclaw.co.uk')
-print(page.get_title())
+# print(page.get_title())
+out_obj = page.get_seo_data()
+with open('seoData.json', 'w') as f:
+    json.dump(out_obj, f, indent=2)
