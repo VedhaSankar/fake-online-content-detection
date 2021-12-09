@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
 from bs4 import BeautifulSoup
-from newspaper_test import get_content
+from newspaper_test import detect_link, get_content
 import requests
 import spacy
 
@@ -77,7 +77,7 @@ def get_required_links(search_string):
 
             links.append(link)
 
-        if len(links) == 10:
+        if len(links) == 3:
 
             break
 
@@ -97,15 +97,7 @@ def get_content_of_link(search_string):
 
     print (content_list)
 
-def get_search_string(content):
-
-    nlp = spacy.load('en_core_web_sm')
-
-    doc = nlp(content)
-
-    print(doc.ents)
-
-def summarize(text):
+def get_keyword_list(text):
 
     # text = """ The couple took their seven pheras on Thursday afternoon, a source told ANI. The wedding, being held at Six Senses, Fort Barwara in Sawai Madhopur, Rajasthan, has been something of a state secret with guests subjected to a no-phone and no-photos rule. No inside pictures or footage is available; however, it is believed that a mehendi ceremony took place on Tuesday as well as a traditional Punjabi 'ladies sangeet' organised by Vicky's mom Veena Kaushal. A haldi ceremony was held on Wednesday followed by a poolside sangeet. The wedding today is believed to have been preceded by a sehrabandi for Vicky.
     # """
@@ -121,15 +113,15 @@ def summarize(text):
 
     keywords = custom_kw_extractor.extract_keywords(text)
 
-    kwd = []
+    keyword_list = []
 
     for kw in keywords:
 
         key, score = kw
 
-        kwd.append(key)
+        keyword_list.append(key)
 
-    print (kwd)
+    return keyword_list
 
 
 def start():
@@ -148,9 +140,19 @@ def start():
         The miserable batting display detracted from the decision to omit Stuart Broad, joining fellow pace bowler James Anderson on the sidelines, the first time in 15 years England have played an Ashes Test without at least one of them.
     '''
 
-    # url = 'http://www.huffingtonpost.com/2013/11/22/twitter-forward-secrecy_n_4326599.html'
+    url = "https://timesofindia.indiatimes.com/business/cryptocurrency/bitcoin/proposed-bill-banning-crypto-payments-could-mean-jail-for-violations-report/articleshow/88145125.cms"
 
-    summarize(sample_content)
+    content = get_content(url)
+
+    keyword_list = get_keyword_list(content)
+
+    print(keyword_list)
+
+    for keyword in keyword_list:
+
+        get_content_of_link(keyword)
+
+        
 
     # search_string = "omicon"
 

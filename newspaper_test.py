@@ -8,11 +8,17 @@ def get_content(url):
 
     article = Article(url)
 
-    article.download()
+    try:
 
-    article.parse()
+        article.download() 
 
-    content = article.text
+        article.parse()
+
+        content = article.text
+
+    except:
+
+        return None
 
     return content
 
