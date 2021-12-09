@@ -42,7 +42,7 @@ def get_google_soup(search_string):
 
     cur_url = driver.current_url
 
-    print (cur_url)
+    # print (cur_url)
 
     url_text = requests.get(cur_url).text
     soup = BeautifulSoup(url_text,'lxml')
@@ -101,17 +101,17 @@ def get_search_string(content):
 
 def start():
 
-    sample_content = '''
-        spaCy is an open-source software library for advanced natural language processing, 
-        written in the programming languages Python and Cython. The library is published under the MIT license
-        and its main developers are Matthew Honnibal and Ines Montani, the founders of the software company Explosion.
-    '''
+    # sample_content = '''
+    #     spaCy is an open-source software library for advanced natural language processing, 
+    #     written in the programming languages Python and Cython. The library is published under the MIT license
+    #     and its main developers are Matthew Honnibal and Ines Montani, the founders of the software company Explosion.
+    # '''
 
-    get_search_string(sample_content)
+    # get_search_string(sample_content)
 
-    # search_string = "omicon"
+    search_string = "omicon"
 
-    # get_required_links(search_string)
+    print (get_required_links(search_string))
 
     # get_content_of_link()
 
