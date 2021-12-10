@@ -1,7 +1,7 @@
 from flask import Flask,request, url_for, redirect, render_template, request
 import pickle
 from validate import fake_news_det as detect_content
-from newspaper_test import detect_link
+from link_score import predict_link_score as detect_link
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText

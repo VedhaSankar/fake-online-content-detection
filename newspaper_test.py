@@ -36,11 +36,13 @@ def detect_link(url):
 
 def test():
 
-    url = "https://timesofindia.indiatimes.com/business/cryptocurrency/bitcoin/proposed-bill-banning-crypto-payments-could-mean-jail-for-violations-report/articleshow/88145125.cms"
-
+    url = "https://www.indiatoday.in/coronavirus-outbreak/story/delhi-covid-cases-death-positivity-rate-1886156-2021-12-09"
     pred = detect_link(url)
 
-    print (pred)
+    # print (pred)
+
+    # content = get_content(url)
+    # print(content)
 
 
 if __name__=='__main__':
