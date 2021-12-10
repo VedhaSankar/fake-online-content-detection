@@ -6,6 +6,8 @@ from PyPDF2 import PdfFileReader
 import urllib
 import urllib.request
 from io import StringIO
+from validate import fake_news_det as detect
+
 
 #Pdf Scraping
 
@@ -46,7 +48,7 @@ num = pdfReader.numPages
 # print(" No. Of Pages :", num)
 
 
-news=""
+news = " "
 
 for i in range(num):
 
@@ -55,5 +57,6 @@ for i in range(num):
     news+=pageObject.extractText()
 
 print(news)
+print(detect(news))
 
 pdfFileObject.close()
