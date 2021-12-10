@@ -157,6 +157,12 @@ def predict_link_score(url):
 
     content = get_content(url)
 
+    predict_content_score(content)
+
+    
+
+def predict_content_score(content):
+
     keyword_list = get_keyword_list(content)
 
     # print(keyword_list)
