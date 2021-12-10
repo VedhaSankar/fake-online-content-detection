@@ -10,11 +10,21 @@ from io import StringIO
 #Pdf Downloading 
 
 # pdf_path = list_of_pdf[15]
-pdf_path = "https://arxiv.org/ftp/arxiv/papers/1501/1501.07088.pdf"
+
+# download_url = "https://arxiv.org/ftp/arxiv/papers/1501/1501.07088.pdf"
+
+
 def download_file(download_url, filename):
-    response = urllib.request.urlopen(download_url)    
+
+    response = urllib.request.urlopen(download_url) 
+
     file = open(filename + ".pdf", 'wb')
+
     file.write(response.read())
+
     file.close()
- 
-download_file(pdf_path, "Cat")
+
+    print ("done")
+
+
+# download_file(download_url, "archive_paper")

@@ -7,19 +7,37 @@ import urllib
 import urllib.request
 from io import StringIO
 
-#Pdf Reading 
-pdfFileObject = open(r"Test.pdf", 'rb')
- 
-pdfReader = PyPDF2.PdfFileReader(pdfFileObject)
 
-num = pdfReader.numPages
- 
-print(" No. Of Pages :", num)
+def get_pdf_content(filename):
 
-for i in range(num):
+    #Pdf Reading 
+    pdfFileObject = open(filename, 'rb')
+    
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObject)
 
-    pageObject = pdfReader.getPage(i)
+    num = pdfReader.numPages
+    
+    print(" No. Of Pages :", num)
 
-    print(pageObject.extractText())
+    content = ""
 
-pdfFileObject.close()
+    for i in range(num):
+
+        pageObject = pdfReader.getPage(i)
+
+        content += pageObject.extractText()
+
+        # print(pageObject.extractText())
+
+    pdfFileObject.close()
+
+    print (content)
+
+def start():
+
+    get_pdf_content("archive_paper.pdf")
+
+
+if __name__=='__main__':
+
+    start()
