@@ -14,3 +14,10 @@
 - Selenium
 - Beautiful Soup
 
+
+## File Structure:
+
+- Templates: HTML files
+- Static: Images
+- Models: Contains models we've tried 
+- Archive: Contains past code and datasets
