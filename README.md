@@ -1,10 +1,10 @@
-# Fake-online-content-detection 
-### This project is based on the detection of fake online content. YoursFakely is the one stop destination for predicting whether a content/link is FAKE or AUTHENTIC.  
+# Fake Online Content Detection
+### This project is based on the detection of fake online content. YoursFakely is the one stop destination for predicting whether a content/link is Fake or Authentic.  
 #### Tech stack used :
 
 - UI
-    - Html
-    - Css
+    - HTML
+    - CSS
     - Javascript
 
 - Flask
