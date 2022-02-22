@@ -17,18 +17,19 @@ mail= Mail(app)
 
 model = pickle.load(open('model_svm.pkl','rb'))
 
-# load_dotenv()
+load_dotenv()
 
-# sender_address = os.environ.get('GMAIL_USER') 
-# sender_pass = os.environ.get('GMAIL_PASSWORD')
+# SENDER_ADDRESS = os.environ.get('GMAIL_USER') 
+# SENDER_PASS = os.environ.get('GMAIL_PASSWORD')
 
-sender_address = os.environ.get('GMAIL_USER') 
-sender_pass = os.environ.get('GMAIL_PASSWORD')
+SENDER_ADDRESS  = os.environ.get('GMAIL_USER') 
+SENDER_PASS     = os.environ.get('GMAIL_PASSWORD')
+EMAIL_LIST      = os.environ.get('EMAIL_LIST')
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = sender_address
-app.config['MAIL_PASSWORD'] = sender_pass
+app.config['MAIL_USERNAME'] = SENDER_ADDRESS
+app.config['MAIL_PASSWORD'] = SENDER_PASS
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -56,32 +57,18 @@ def home():
 @app.route('/alert', methods = ["GET", "POST"])
 def alert():
 
-    email_list = ['vedhasankar26@gmail.com', "harenemaharajan02@gmail.com", "ishitagops12@gmail.com"]
-
-    for sender in email_list:
+    for sender in EMAIL_LIST:
         send_email(
             receiver_address=sender,
             subject='Alert',
             content="The mentioned content is FAKE, alerted the authorities!"
             )
-    # msg = Message('Alerted', sender = 'yoursfakely@gmail.com', recipients = ['ishitagops12@gmail.com'])
-    # msg.body = "The mentioned content is FAKE,Alerted the authorities!"
-    # mail.send(msg)
+
     return render_template("index.html")
-
-
-# @app.route('/predict', methods = ["GET","POST"])
-# def send_content():
-#     # text = request.values.get("news")
-
-#     # prediction = detect(text)
-#     prediction = "hello"
-#     # return render_template("index.html", prediction = prediction)
-#     return redirect(url_for('home'))
 
 if __name__ == "__main__":
 
-    app.run(debug = True,host="0.0.0.0")
+    app.run(debug = True,host="0.0.0.0", port = 8500)
 
 
 
