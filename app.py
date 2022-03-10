@@ -27,7 +27,7 @@ load_dotenv()
 
 SENDER_ADDRESS  = os.environ.get('GMAIL_USER') 
 SENDER_PASS     = os.environ.get('GMAIL_PASSWORD')
-EMAIL_LIST      = os.environ.get('EMAIL_LIST')
+EMAIL_LIST      = os.environ.get('EMAIL_LIST').split(',')
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -65,7 +65,7 @@ def alert():
         send_email(
             receiver_address=sender,
             subject='Alert',
-            content="The mentioned content is FAKE, alerted the authorities!"
+            content="The mentioned content is FAKE, alerted the authorities!!"
             )
 
     return render_template("index.html")

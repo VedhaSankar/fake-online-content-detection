@@ -32,3 +32,10 @@ def send_email(receiver_address,subject,content):
     session.quit()
 
     print('Mail Sent')
+
+if __name__=='__main__':
+    send_email(
+        receiver_address='dummy@gmail.com',
+        subject='Alert',
+        content="The mentioned content is FAKE, alerted the authorities!"
+        )
