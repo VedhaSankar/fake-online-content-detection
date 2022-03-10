@@ -14,6 +14,9 @@ from emailer import send_email
 app = Flask(__name__)
 mail= Mail(app)
 
+# https://www.dnaindia.com/education/report-cbse-class-10-12-board-exam-2022-term-1-cancellation-latest-updates-news-exam-centre-datesheetonline-petition-2917207
+# https://www.bbc.com/news/live/world-europe-60685883
+
 
 model = pickle.load(open('model_svm.pkl','rb'))
 
@@ -47,9 +50,10 @@ def home():
         try:
             link = request.values.get("news_link")
             prediction = detect_link(link)
+            print("Prediction: ", prediction)        
+
         except:
             pass
-        
         return render_template("index.html", prediction = prediction)
 
     return render_template("index.html")
