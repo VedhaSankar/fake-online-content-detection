@@ -12,3 +12,6 @@ selenium
 flask_mail
 spacy
 yake
+# opencv-python
+# pytesseract
+# tkinter
