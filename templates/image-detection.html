@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icon.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;800&display=swap" rel="stylesheet">
+
+    <!--PLUGIN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* waves */
+
+        @import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+        :root {
+            --gradient-percent: 0%;
+        }
+        .b{
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 48px;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(90deg, #21325E var(--gradient-percent), rgba(154, 198, 229, 1) 100%);
+            color: white;
+        }
+
+        .logo {
+            width: 50px;
+            fill: white;
+            padding-right: 15px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .inner-header {
+            height: 20vh;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flex {
+            /*Flexbox for containers*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 15vh;
+            margin-bottom: -7px;
+            /*Fix for safari gap*/
+            min-height: 100px;
+            max-height: 150px;
+        }
+
+        .content {
+            position: relative;
+            height: 20vh;
+            text-align: center;
+            background-color: white;
+        }
+
+        /* Animation */
+
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
+        }
+
+        /*Shrinking for mobile*/
+
+        @media (max-width: 768px) {
+            .waves {
+                height: 40px;
+                min-height: 40px;
+            }
+
+            .content {
+                height: 30vh;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="inner-header flex">
+            <h1><b>Fake Image Detection</b></h1>
+        </div>
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+
+    </div>
+
+    <br><br><br><br>
+
+    <form action="/image-detection" method="post" enctype="multipart/form-data" style="align-items: center;">
+
+        <!-- class="custom-file-input" -->
+        <input type="file" name="file" id="file" style="padding-left:800px">
+        <input type="submit" value="Upload File" name="submit">
+
+    </form>
+    <br><br><br><br>
+
+    {% if prediction == 1 %}
+    <h5 class="sub-title" style="padding-left:620px;font-size:x-large;" ><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o"
+                aria-hidden="true" style="color: green;"></i>
+
+            {% endif %}
+
+            {% if prediction == 0 %}
+            <h5 class="sub-title" style="margin-left: 17rem;padding-left:620px;font-size:x-large"><b>The content is FAKE. <i class="fa fa-times"
+                        aria-hidden="true" style="color: red;"></i>
+
+                    {% endif %}
+
+                    <script>
+                        // WAVES 
+
+                        let root = document.documentElement;
+                        const section1 = document.querySelector('.header')
+
+                        window.addEventListener('scroll', () => {
+                            const y = 1 + (window.scrollY || window.pageYOffset);
+                            root.style.setProperty('--gradient-percent', y * 4 + "px");
+                            console.log(y)
+                        })
+                    </script>
+</body>
+
+</html>
