@@ -102,7 +102,8 @@ def image_detection():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            text = image_to_string(filename)
+            # print(filename)
+            text = image_to_string(f"uploads/{filename}")
             prediction = detect_content(text)
             return render_template('image-detection.html', prediction=prediction)
 
