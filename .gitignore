@@ -130,3 +130,6 @@ dmypy.json
 
 
 archive/
+# Allow
+! uploads/a.txt
+uploads/*

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+
+<body>
+
+    <br><br>
+    <form action="/image-detection" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload File" name="submit">
+    </form>
+
+    {% if prediction == 1 %}
+    <h5 class="sub-title" style="margin-left: 17rem"><b>The content is AUTHENTIC. <i class="fa fa-check-circle-o" aria-hidden="true" style="color: green;"></i>
+
+{% endif %}
+
+{% if prediction == 0 %}
+    <h5 class="sub-title" style="margin-left: 17rem"><b>The content is FAKE. <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+
+{% endif %}
+
+
+</body>
+
+</html>
