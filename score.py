@@ -110,7 +110,7 @@ def get_keyword_list(text):
     # """
     language = "en"
 
-    max_ngram_size = 3
+    max_ngram_size = 10
 
     deduplication_threshold = 0.9
 
@@ -120,6 +120,7 @@ def get_keyword_list(text):
 
     keywords = custom_kw_extractor.extract_keywords(text)
 
+
     keyword_list = []
 
     for kw in keywords:
@@ -128,7 +129,12 @@ def get_keyword_list(text):
 
         keyword_list.append(key)
 
+    print(keyword_list)
+
+
     return keyword_list
+
+
 
 def finalizer(pred_list):
 
