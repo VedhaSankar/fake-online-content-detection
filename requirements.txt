@@ -12,3 +12,4 @@ selenium
 flask_mail
 spacy
 yake
+pytesseract
