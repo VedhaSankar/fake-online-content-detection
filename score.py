@@ -27,8 +27,9 @@ def get_required_links(search_string):
 
     soup = get_google_soup(search_string)
 
-    main_div = soup.find("div", {"class": "lBwEZb BL5WZb xP6mwf"})
-
+    # main_div = soup.find("div", {"class": "lBwEZb BL5WZb xP6mwf"})
+    main_div = soup.find("div", {"class": "lBwEZb BL5WZb GndZbb"})
+    
     all_links =  main_div.find_all('a')
 
     links = []
