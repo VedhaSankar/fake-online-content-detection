@@ -79,7 +79,7 @@ def alert():
         send_email(
             receiver_address=sender,
             subject='Alert',
-            content="The mentioned content is FAKE, alerted the authorities!!"
+            content="The mentioned content is fake, alerted the authorities."
             )
 
     return render_template("index.html")
